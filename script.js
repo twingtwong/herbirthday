@@ -173,11 +173,11 @@ function createGallery(){
   gallery.innerHTML="";
   cards=[];
   const images = [
-  {src: "img1.jpg"},
-  {src: "img2.jpg"},
-  {src: "img3.jpg"},
-  {src: "img4.jpg"},
-  {src: "img5.jpg", final: true} // 👈 ONLY THIS opens ending
+  {src: "img1.jpeg"},
+  {src: "img2.jpeg"},
+  {src: "img3.jpeg"},
+  {src: "img4.jpeg"},
+  {src: "img5.jpeg", final: true} // 👈 ONLY THIS opens ending
 ];
 
   

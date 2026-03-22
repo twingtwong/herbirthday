@@ -1,0 +1,129 @@
+body {
+  margin: 0;
+  font-family: 'Luckiest Guy', cursive;
+  background: #0d0d0d;
+  color: white;
+  overflow: hidden;
+}
+
+/* SCREENS */
+.screen {
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.screen.active {
+  display: flex;
+}
+
+/* BUTTON */
+button {
+  padding: 12px 20px;
+  font-size: clamp(14px, 4vw, 18px);
+  border: none;
+  background: #ff4d6d;
+  color: white;
+  border-radius: 10px;
+}
+
+/* BACK */
+.backBtn {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+}
+
+/* FIX CLICK BLOCK */
+#bgFloating {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+#screen1 button {
+  position: relative;
+  z-index: 2;
+}
+
+/* FLOAT */
+.floating {
+  position: absolute;
+  font-size: 22px;
+  animation: floatUp linear infinite;
+}
+
+@keyframes floatUp {
+  from { transform: translateY(100vh); }
+  to { transform: translateY(-10vh); }
+}
+
+/* TEXT */
+#birthdayText {
+  font-size: clamp(28px, 8vw, 60px);
+  text-align: center;
+  padding: 0 10px;
+  z-index: 10;
+}
+
+/* TUNNEL */
+.tunnel {
+  transform: scale(3);
+  filter: blur(6px);
+  opacity: 0;
+  transition: 0.7s;
+}
+
+/* 3D */
+#screen3 {
+  perspective: 1000px;
+}
+
+.gallery {
+  width: 220px;
+  height: 220px;
+  transform-style: preserve-3d;
+  position: relative;
+}
+
+.card {
+  position: absolute;
+  width: 110px;
+  height: 150px;
+  border-radius: 10px;
+  overflow: hidden;
+  left: 50%;
+  top: 50%;
+  transform-style: preserve-3d;
+}
+
+.card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* FINAL */
+#finalMessage {
+  font-size: clamp(16px, 5vw, 24px);
+  width: 85%;
+  text-align: center;
+  white-space: pre-wrap;
+  border-right: 2px solid #ff4d6d;
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  50% { border-color: transparent; }
+}
+
+#confettiCanvas {
+  position: fixed;
+  top: 0;
+  pointer-events: none;
+}

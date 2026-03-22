@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For You ❤️</title>
+<link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div id="app">
+
+  <!-- SCREEN 1 -->
+  <section id="screen1" class="screen active">
+    <div id="bgFloating"></div>
+    <button id="startBtn">Tap Me ❤️</button>
+  </section>
+
+  <!-- SCREEN 2 -->
+  <section id="screen2" class="screen">
+    <h1 id="birthdayText"></h1>
+    <button id="nextBtn">Next 💌</button>
+  </section>
+
+  <!-- SCREEN 3 -->
+  <section id="screen3" class="screen">
+    <button id="backBtn" class="backBtn">← Back</button>
+    <div class="gallery" id="gallery"></div>
+  </section>
+
+  <!-- FINAL SCREEN -->
+  <section id="screen4" class="screen">
+    <div id="finalMessage"></div>
+  </section>
+
+  <canvas id="confettiCanvas"></canvas>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

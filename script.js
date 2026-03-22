@@ -47,7 +47,7 @@ startBtn.onclick = () => {
 
 /* TEXT */
 function animateText() {
-  const text = "HAPPY  BIRTHDAY ❤️";
+  const text = "HAPPY  BIRTHDAY TO MY PASANDEEDA AURAT! ❤️";
   textContainer.innerHTML = "";
 
   let delay = 0;
@@ -84,7 +84,7 @@ function animateText() {
       span.style.transform = "translate(0, 0) scale(1)";
     }, delay + 50); // 👈 slight offset fixes instant visibility
 
-    delay += 120;
+    delay += 200;
   });
 
   // show button after animation
@@ -282,17 +282,21 @@ function expandCard(){
 }
 
 function showFinalMessage(){
-  const msg=`Hey Rooh ❤️
+  const msg=`Hey Baby, ITS YOUR BIRTHDAYYYY ❤️
 
-Happy Birthday.
+Happy Birthday :)
 
-I made this just for you.
-I made this just for you.
-I made this just for you.
-I made this just for you.
-I made this just for you.
+Aao tumhe tumhari qualities ginvau
 
-I love you ❤️`;
+You are Smartyyyy
+Your fashion sense is top notch (i am jealous)
+You are sweet (yum yum)
+You are cute (self explanatory)
+You are hot (😳)
+All in all, you are a beauty with brains.
+It's your day baby, enjoyyyyyyyyyyyyyyyyy HURRAHHHHHHHHHHHHHHHHHH AHHHHH!!!!!!!
+
+I love youuuu so so so so so so muchhhhhhhhh ❤️`;
 
   const el=document.getElementById("finalMessage");
   let i=0;

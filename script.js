@@ -165,6 +165,10 @@ backBtn.onclick=()=>{
 
 /* 3D GALLERY TOUCH */
 let autoRotate = true;
+let velocity = 0;
+let lastTouchX = 0;
+let lastMoveTime = 0;
+let resumeTimeout;
 let rotation=0;
 let cards=[];
 let touchStartX=0;
@@ -215,26 +219,56 @@ function createGallery(){
 function animateGallery(){
 
   if(autoRotate){
-    rotation += 0.1; // 👈 slow smooth rotation
+    rotation += 0.1; // slow smooth rotation
   }
 
   cards.forEach((c,i)=>{
-    let angle=(i/cards.length)*360+rotation;
-    c.style.transform=`rotateY(${angle}deg) translateZ(220px)`;
+    let angle = (i/cards.length)*360 + rotation;
+    c.style.transform = `rotateY(${angle}deg) translateZ(220px)`;
   });
 
   requestAnimationFrame(animateGallery);
 }
 
-window.addEventListener("touchstart",e=>{
-  touchStartX=e.touches[0].clientX;
+window.addEventListener("touchstart", e => {
+  autoRotate = false;
+
+  lastTouchX = e.touches[0].clientX;
+  lastMoveTime = Date.now();
+
+  clearTimeout(resumeTimeout);
 });
 
-window.addEventListener("touchmove",e=>{
-  autoRotate = false;
-  let diff=e.touches[0].clientX-touchStartX;
-  rotation+=diff*0.3;
-  touchStartX=e.touches[0].clientX;
+window.addEventListener("touchmove", e => {
+  const currentX = e.touches[0].clientX;
+  const now = Date.now();
+
+  const dx = currentX - lastTouchX;
+  const dt = now - lastMoveTime;
+
+  rotation += dx * 0.3;
+
+  // 👇 calculate velocity (for inertia)
+  velocity = dx / dt;
+
+  lastTouchX = currentX;
+  lastMoveTime = now;
+});
+window.addEventListener("touchend", () => {
+
+  function applyInertia() {
+    velocity *= 0.95;
+
+    if (Math.abs(velocity) > 0.01) {
+      rotation += velocity * 20;
+      requestAnimationFrame(applyInertia);
+    } else {
+      autoRotate = true; // 👈 resumes immediately after slowing
+    }
+  }
+
+  applyInertia();
+
 });
 
 /* FINAL */

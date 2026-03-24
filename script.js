@@ -281,12 +281,14 @@ Rupali, you can't even imagine what you mean to me :)`;
 
     const char = msg[i];
     el.innerText += char;
+
+    // 👇 ADD THIS LINE
+    el.scrollTop = el.scrollHeight;
+
     i++;
 
-    // 👇 detect Hindi (Unicode range)
     const isHindi = /[\u0900-\u097F]/.test(char);
-
-    const delay = isHindi ? 100 : 40; // 👈 adjust here
+    const delay = isHindi ? 100 : 40;
 
     setTimeout(type, delay);
   }

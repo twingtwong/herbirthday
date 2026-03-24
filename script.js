@@ -37,10 +37,12 @@ startFloatingBG();
 /* SCREEN 1 → 2 */
 startBtn.onclick = () => {
   const music = document.getElementById("bgMusic");
+  
   music.currentTime = 5;
 
   // 👇 play music safely
   music.play().catch(() => {});
+
   stopFloatingBG();
   screen1.classList.add("tunnel");
   setTimeout(()=>{

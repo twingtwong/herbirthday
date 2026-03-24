@@ -170,113 +170,64 @@ backBtn.onclick=()=>{
   },700);
 };
 
-/* 3D GALLERY TOUCH */
-let autoRotate = true;
-let velocity = 0;
-let lastTouchX = 0;
-let lastMoveTime = 0;
-let resumeTimeout;
-let rotation=0;
-let cards=[];
-let touchStartX=0;
-
 function createGallery(){
   gallery.innerHTML="";
-  cards=[];
+
   const images = [
-  {src: "img1.jpeg"},
-  {src: "img2.jpeg"},
-  {src: "img3.jpeg"},
-  {src: "img4.jpeg"},
-  {src: "img5.jpeg", final: true} // 👈 ONLY THIS opens ending
-];
+    {src: "img1.jpeg"},
+    {src: "img2.jpeg"},
+    {src: "img3.jpeg"},
+    {src: "img4.jpeg"},
+    {src: "img5.jpeg", final: true}
+  ];
 
-  
-  images.forEach((item,i)=>{
-    let c=document.createElement("div");
-    c.className="card";
+  images.forEach((item, i) => {
 
-    c.innerHTML = `<img src="${item.src}">`;
+    const card = document.createElement("div");
+    card.className = "card";
 
-    // 👇 add label for final card
+    const img = document.createElement("img");
+    img.src = item.src;
+
+    card.appendChild(img);
+
+    // final card
     if(item.final){
       const label = document.createElement("div");
+      label.className = "finalLabel";
       label.innerText = "Tap Me 💌";
-      label.style.position = "absolute";
-      label.style.bottom = "5px";
-      label.style.width = "100%";
-      label.style.textAlign = "center";
-      label.style.fontSize = "14px";
-      c.appendChild(label);
+      card.appendChild(label);
+
+      card.onclick = () => expandCard();
     }
 
-    gallery.appendChild(c);
-    cards.push(c);
+    gallery.appendChild(card);
 
-    c.onclick = () => {
-      if(item.final){
-        expandCard(); // go to final
-      }
-    };
-  });
+    // animation
+    setTimeout(() => {
 
-  animateGallery();
+      const startX = (Math.random() - 0.5) * 600;
+      const startY = (Math.random() - 0.5) * 600;
+
+      // start position
+      card.style.transform =
+        `translate(${startX}px, ${startY}px) scale(0.5) rotate(${Math.random()*360}deg)`;
+
+      requestAnimationFrame(() => {
+
+        const rot = (Math.random() - 0.5) * 6;
+
+        card.style.opacity = "1";
+        card.style.transform =
+          `translate(0, 0) scale(1) rotate(${rot}deg)`;
+
+      });
+
+    }, i * 2300);
+
+  }); // 👈 THIS WAS MISSING
+
 }
-
-function animateGallery(){
-
-  if(autoRotate){
-    rotation += 0.1; // slow smooth rotation
-  }
-
-  cards.forEach((c,i)=>{
-    let angle = (i/cards.length)*360 + rotation;
-    c.style.transform = `rotateY(${angle}deg) translateZ(220px)`;
-  });
-
-  requestAnimationFrame(animateGallery);
-}
-
-window.addEventListener("touchstart", e => {
-  autoRotate = false;
-
-  lastTouchX = e.touches[0].clientX;
-  lastMoveTime = Date.now();
-
-  clearTimeout(resumeTimeout);
-});
-
-window.addEventListener("touchmove", e => {
-  const currentX = e.touches[0].clientX;
-  const now = Date.now();
-
-  const dx = currentX - lastTouchX;
-  const dt = now - lastMoveTime;
-
-  rotation += dx * 0.3;
-
-  // 👇 calculate velocity (for inertia)
-  velocity = dx / dt;
-
-  lastTouchX = currentX;
-  lastMoveTime = now;
-});
-window.addEventListener("touchend", () => {
-
-  function applyInertia() {
-    velocity *= 0.95;
-
-    if (Math.abs(velocity) > 0.01) {
-      rotation += velocity * 20;
-      requestAnimationFrame(applyInertia);
-    } else {
-      autoRotate = true; // 👈 resumes immediately after slowing
-    }
-  }
-
-  applyInertia();
-
-});
 
 /* FINAL */
 function expandCard(){
@@ -303,26 +254,42 @@ You are hot (😳)
 All in all, you are a beauty with brains.
 It's your day baby, enjoyyyyyyyyyyyyyyyyy HURRAHHHHHHHHHHHHHHHHHH AHHHHH!!!!!!!
 
-I love youuuu so so so so so so muchhhhhhhhh ❤️
-and as the song says
+I love youuuu so so so so so so so so muchhhhhhhhh ❤️
 
-जे तू थोड़ी घबराज्या, मेरी याद तन्ने आ ज्या
-तू दे दिए आवाज रे, मैं आ जाऊंगा
-तोड़ूं दुनिया की रीत रे, के हार रे, के जीत?
-मन्ने चाहिए तेरी प्रीत, मैं निभा जाऊंगा
-देख, बावला बनागी, मन्ने लिखणा सिखागी
-हाय, नोच-नोच खागी तेरी बैरण जुदाई मन्ने`;
+and these lines below are pretty much my feelings....
+
+हो, मार्या-मार्या फिरे, देख हाल तू बिचारे का
+तेरे बिना जीणा भी के जीणा बंजारे का?
+खोया रहूं याद तेरी कर के नादानियां
+बटुए में रखूं तेरी सांभ के निशानियां
+तेरे बिना काल होरया, ठीक कोन्या हाल मेरा
+हाथ जोड़ूं राम, देदे सांसों ते रिहाई मन्ने
+गीतां में गाई, कदे छाती के लगाई मन्ने
+जित भी गया रे, तेरी याद खड़ी पाई मन्ने
+सांभ-सांभ राखी बहुत, छाती के लगाई मन्ने
+जित भी गया रे, तेरी याद खड़ी पाई मन्ने`;
+
 
   const el=document.getElementById("finalMessage");
   let i=0;
 
   function type(){
-    if(i<msg.length){
-      el.innerText+=msg[i++];
-      setTimeout(type,40);
-    }
+  if(i < msg.length){
+
+    const char = msg[i];
+    el.innerText += char;
+    i++;
+
+    // 👇 detect Hindi (Unicode range)
+    const isHindi = /[\u0900-\u097F]/.test(char);
+
+    const delay = isHindi ? 100 : 40; // 👈 adjust here
+
+    setTimeout(type, delay);
   }
+}
   type();
 }
 
 });
+

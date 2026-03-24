@@ -129,9 +129,15 @@ button {
 /* FINAL */
 #finalMessage {
   font-size: clamp(16px, 5vw, 24px);
-  width: 85%;
+  width: 90%;
+  max-height: 80vh;
+
+  overflow-y: auto; /* 👈 enables scrolling */
+  padding-right: 10px;
+
   text-align: center;
   white-space: pre-wrap;
+
   border-right: 2px solid #ff4d6d;
   animation: blink 1s infinite;
 }

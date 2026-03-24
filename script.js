@@ -303,7 +303,15 @@ You are hot (😳)
 All in all, you are a beauty with brains.
 It's your day baby, enjoyyyyyyyyyyyyyyyyy HURRAHHHHHHHHHHHHHHHHHH AHHHHH!!!!!!!
 
-I love youuuu so so so so so so muchhhhhhhhh ❤️`;
+I love youuuu so so so so so so muchhhhhhhhh ❤️
+and as the song says
+
+जे तू थोड़ी घबराज्या, मेरी याद तन्ने आ ज्या
+तू दे दिए आवाज रे, मैं आ जाऊंगा
+तोड़ूं दुनिया की रीत रे, के हार रे, के जीत?
+मन्ने चाहिए तेरी प्रीत, मैं निभा जाऊंगा
+देख, बावला बनागी, मन्ने लिखणा सिखागी
+हाय, नोच-नोच खागी तेरी बैरण जुदाई मन्ने`;
 
   const el=document.getElementById("finalMessage");
   let i=0;

@@ -267,7 +267,10 @@ and these lines below are pretty much my feelings....
 गीतां में गाई, कदे छाती के लगाई मन्ने
 जित भी गया रे, तेरी याद खड़ी पाई मन्ने
 सांभ-सांभ राखी बहुत, छाती के लगाई मन्ने
-जित भी गया रे, तेरी याद खड़ी पाई मन्ने`;
+जित भी गया रे, तेरी याद खड़ी पाई मन्ने
+
+Rupali, you can't even imagine what you mean to me :)`;
+
 
 
   const el=document.getElementById("finalMessage");

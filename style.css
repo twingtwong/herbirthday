@@ -85,27 +85,45 @@ button {
 }
 
 .gallery {
-  width: 220px;
-  height: 220px;
-  transform-style: preserve-3d;
   position: relative;
+  width: 220px;
+  height: 300px;
 }
 
 .card {
   position: absolute;
-  width: 110px;
-  height: 150px;
-  border-radius: 10px;
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
   overflow: hidden;
-  left: 50%;
-  top: 50%;
-  transform-style: preserve-3d;
+
+  opacity: 0;
+  transform: translate(0, 0) scale(0.6) rotate(0deg);
+
+  transition: all 0.8s ease;
 }
 
 .card img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+/* stacking */
+.card:nth-child(1) { z-index: 1; }
+.card:nth-child(2) { z-index: 2; }
+.card:nth-child(3) { z-index: 3; }
+.card:nth-child(4) { z-index: 4; }
+.card:nth-child(5) { z-index: 5; }
+
+/* final label */
+.finalLabel {
+  position: absolute;
+  bottom: 10px;
+  width: 100%;
+  text-align: center;
+  font-size: 18px;
+  color: white;
 }
 
 /* FINAL */
